@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.mail.park.DAO.ForumDAO;
-import ru.mail.park.DAO.PostDAO;
-import ru.mail.park.DAO.ThreadDAO;
-import ru.mail.park.DAO.UserDAO;
+import ru.mail.park.DAO.Forum.ForumDAO;
+import ru.mail.park.DAO.Post.PostDAO;
+import ru.mail.park.DAO.Thread.ThreadDAO;
+import ru.mail.park.DAO.User.UserDAO;
+import ru.mail.park.Models.ResponseModel;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -56,18 +57,18 @@ public class GeneralController {
 
     @RequestMapping(path = "/db/api/clear", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public DescResponse clear() throws IOException {
+    public ResponseModel clear() throws IOException {
         userDAO.truncateTable();
         forumDAO.truncateTable();
         threadDAO.truncateTable();
         postDAO.truncateTable();
 
         LOGGER.info("clear");
-        return new DescResponse("OK", DescResponse.OK);
+        return new ResponseModel("OK", ResponseModel.OK);
     }
 
     @RequestMapping(path = "/db/api/status", method = RequestMethod.GET)
-    public DescResponse status() throws IOException {
+    public ResponseModel status() throws IOException {
         final Map<String, Integer> responseBody = new HashMap<>();
         responseBody.put("user", userDAO.count());
         responseBody.put("thread", threadDAO.count());
@@ -75,6 +76,6 @@ public class GeneralController {
         responseBody.put("post", postDAO.count());
 
         LOGGER.info("status");
-        return new DescResponse(responseBody, DescResponse.OK);
+        return new ResponseModel(responseBody, ResponseModel.OK);
     }
 }
