@@ -18,7 +18,7 @@ public class MysqlConnectionConfig {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static final String URL = "jdbc:mysql://localhost:3306/Database?autoreconnect=true&useUnicode=yes&useSSL=false&characterEncoding=UTF-8";
     public static final String USER = "root";
-    public static final String PASSWORD = "626836";
+    public static final String PASSWORD = "626836dima";
     public static final int MAX_ACTIVE = 5;
 
     @Bean
