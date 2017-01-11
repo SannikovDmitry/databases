@@ -6,9 +6,11 @@ import org.apache.commons.dbcp.PoolableConnectionFactory;
 import org.apache.commons.dbcp.PoolingDataSource;
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+@Configuration
 @EnableAutoConfiguration
 public class MysqlConnectionConfig {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
