@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `TPForum`;
-USE `TPForum`;
-
 DROP TABLE IF EXISTS `follows`;
 CREATE TABLE `follows` (
   `follower` varchar(150) NOT NULL,
